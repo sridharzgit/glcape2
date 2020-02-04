@@ -1,0 +1,18 @@
+tflite_convert --graph_def_file=tflite_graph.pb   --output_file=output/kyc_detection_updated_20_112019.tflite   --output_format=TFLITE   --input_shape=1,300,300,3   --input_array=normalized_input_image_tensor    --output_array='TFLite_Detection_PostProcess', 'TFLite_Detection_PostProcess:1', 'TFLite_Detection_PostProcess:2', 'TFLite_Detection_PostProcess:3'   --inference_type=QUANTIZED_UINT8   --std_dev_values=128 --mean_values=128    --default_ranges_min=0   --default_ranges_max=6 --allow_custom_ops
+
+
+
+tflite_convert --output_file=test.tflite  --  
+graph_def_file=tflite_graph.pb
+ --input_arrays=normalized_input_image_tensor --
+output_arrays='TFLite_Detection_PostProcess','TFLite_Detection_PostProcess:1',
+'TFLite_Detection_PostProcess:2','TFLite_Detection_PostProcess:3'--
+input_shape=1,300,300,3 --allow_custom_ops
+
+
+
+
+#working command
+toco --graph_def_file=tflite_graph.pb --output_file=model_tflite_21_11_2019.tflite --output_format=TFLITE --input_shape=1,300,300,3 --input_array=normalized_input_image_tensor --output_array='TFLite_Detection_PostProcess','TFLite_Detection_PostProcess:1','TFLite_Detection_PostProcess:2','TFLite_Detection_PostProcess:3' --inference_type=FLOAT --std_dev_values=128 --mean_values=128 --default_ranges_min=-6 --default_ranges_max=6 --allow_custom_ops --post_training_quantize
+
+
