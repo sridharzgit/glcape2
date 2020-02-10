@@ -12,16 +12,17 @@ import matplotlib.image as mpimg
 import numpy as np
 import matplotlib.pyplot as plt
 import os
-count = 232
-for image in glob.glob('C:/Users/100119/Desktop/kyc_retrain/pan_augmented/*.jpg'):
+count = 1
+for image in glob.glob('C:/Users/100119/Desktop/kyc_retrain/kyc_04-02-2020_model_kyc-detection/resized_images/final_data/New folder/*.jpg'):
      print(image)
-     count=count+1
-     image=cv2.imread(image)   
-#     image = cv2.resize(image,(300,300),fx=2.5,fy=2.5)
-     image = cv2.resize(image,None,fx=0.25, fy=0.25, interpolation=cv2.INTER_AREA)
+     
+     image=cv2.imread(image) 
+#     print(image.shape)
+     image = cv2.resize(image,(300,300),fx=0.25,fy=0.25)
+#     image = cv2.resize(image,None,fx=2.5, fy=2.5, interpolation=cv2.INTER_AREA)
      plt.imshow(image)
      plt.show()
      #Save Each Transformation
-     cv2.imwrite('C:/Users/100119/Desktop/kyc_retrain/resized_images/00000_new_' +  str(count)+ '.jpg',image)
+     cv2.imwrite('C:/Users/100119/Desktop/kyc_retrain/kyc_04-02-2020_model_kyc-detection/resized_images/final_data/rerwr/00000_new_' +  str(count)+ '.jpg',image)
 #     os.rename(image,'D:/DOC_EXTRACT/train/doc_res_' +str(count)+ '.jpg')
      count=count+1

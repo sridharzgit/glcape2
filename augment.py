@@ -9,15 +9,15 @@
     import os
     
     datagen = ImageDataGenerator(
-            #rotation_range=2,
+            rotation_range=2,
             width_shift_range=0.0,
             height_shift_range=0.0,
-            shear_range=0.1,
-            zoom_range=0.1
+            shear_range=0.3,
+            zoom_range=0.3
             #horizontal_flip=True,
     #        fill_mode='nearest'
             )
-    directory = 'C:/Users/100119/Desktop/kyc_retrain/pan'
+    directory = 'C:/Users/100119/Desktop/kyc_retrain/pan_data_extraction/pan_data_extraction_data_06_02_2020/New folder'
     for filename in os.listdir(directory):
         img = load_img(directory+"/"+filename)  # this is a PIL image
         x = img_to_array(img)  # this is a Numpy array with shape (3, 150, 150)
@@ -28,8 +28,8 @@
         i = 0
         j = 0
         for batch in datagen.flow(x, batch_size=1,
-                                  save_to_dir='C:/Users/100119/Desktop/kyc_retrain/aug_images', save_prefix="image", save_format='jpg'):
+                                  save_to_dir='C:/Users/100119/Desktop/kyc_retrain/pan_data_extraction/pan_data_extraction_data_06_02_2020/aug_images', save_prefix="image_pan", save_format='jpg'):
             i += 1
             j += 1
-            if i > 5:
+            if i > 2:
                 break  # otherwise the generator would loop indefinitely
