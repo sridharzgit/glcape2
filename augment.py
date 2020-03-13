@@ -24,7 +24,7 @@ datagen = ImageDataGenerator(
             #horizontal_flip=True,
     #        fill_mode='nearest'
             )
-    directory = 'C:/Users/100119/Desktop/PRUDENTIAL/CREDIT_CARD_NO_MASKING/data/images'
+    directory = 'C:/Users/100119/Desktop/PRUDENTIAL/HANDWRITTEN_DATA_EXTRACTION/IMAGES_HANDWRITTEN/handwritten_forms/swathy'
     for filename in os.listdir(directory):
         img = load_img(directory+"/"+filename)  # this is a PIL image
         x = img_to_array(img)  # this is a Numpy array with shape (3, 150, 150)
@@ -35,8 +35,8 @@ datagen = ImageDataGenerator(
         i = 0
         j = 0
         for batch in datagen.flow(x, batch_size=1,
-                                  save_to_dir='C:/Users/100119/Desktop/PRUDENTIAL/CREDIT_CARD_NO_MASKING/data/aug_images', save_prefix="credit_card_form_", save_format='jpg'):
+                                  save_to_dir='C:/Users/100119/Desktop/PRUDENTIAL/HANDWRITTEN_DATA_EXTRACTION/IMAGES_HANDWRITTEN/handwritten_forms/aug_images', save_prefix="hand_written_form_", save_format='jpg'):
             i += 1
             j += 1
-            if i > 100:
+            if i > 10:
                 break  # otherwise the generator would loop indefinitely
