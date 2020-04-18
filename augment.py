@@ -5,8 +5,8 @@
     @author: 100119
     """
 
-    from keras.preprocessing.image import ImageDataGenerator, array_to_img, img_to_array, load_img
-    import os
+from keras.preprocessing.image import ImageDataGenerator, array_to_img, img_to_array, load_img
+import os
 # keras.preprocessing.image.ImageDataGenerator(featurewise_center=False, samplewise_center=False,\
 #                                              featurewise_std_normalization=False, samplewise_std_normalization=False,
 #                                              zca_whitening=False, zca_epsilon=1e-06, rotation_range=0, width_shift_range=0.0, height_shift_range=0.0,\
@@ -16,15 +16,17 @@
 #                                              validation_split=0.0, interpolation_order=1, dtype='float32')
 
 datagen = ImageDataGenerator(
+            # featurewise_center = True,
+            # featurewise_std_normalization=True,
             rotation_range=2,
-            width_shift_range=0.0,
-            height_shift_range=0.0,
+            width_shift_range=0.01,
+            height_shift_range=0.01,
             shear_range=0.1,
-            zoom_range=0.1
+            zoom_range=0.2,
             #horizontal_flip=True,
-    #        fill_mode='nearest'
+            fill_mode='nearest'
             )
-    directory = 'C:/Users/100119/Desktop/PRUDENTIAL/HANDWRITTEN_DATA_EXTRACTION/IMAGES_HANDWRITTEN/handwritten_forms/swathy'
+    directory = 'C:/Users/100119/Desktop/PRUDENTIAL/CREDIT_CARD_NO_MASKING/data/TRAIN_2/FRCNN/PDF_FORM_TYPES/TATA/IMAGE'
     for filename in os.listdir(directory):
         img = load_img(directory+"/"+filename)  # this is a PIL image
         x = img_to_array(img)  # this is a Numpy array with shape (3, 150, 150)
@@ -35,8 +37,8 @@ datagen = ImageDataGenerator(
         i = 0
         j = 0
         for batch in datagen.flow(x, batch_size=1,
-                                  save_to_dir='C:/Users/100119/Desktop/PRUDENTIAL/HANDWRITTEN_DATA_EXTRACTION/IMAGES_HANDWRITTEN/handwritten_forms/aug_images', save_prefix="hand_written_form_", save_format='jpg'):
+                                  save_to_dir='C:/Users/100119/Desktop/PRUDENTIAL/CREDIT_CARD_NO_MASKING/data/TRAIN_2/FRCNN/PDF_FORM_TYPES/TATA/AUG_IMAGES', save_prefix="TATA_FORM_", save_format='jpg'):
             i += 1
             j += 1
-            if i > 10:
+            if i > 100:
                 break  # otherwise the generator would loop indefinitely
