@@ -26,19 +26,19 @@ datagen = ImageDataGenerator(
             #horizontal_flip=True,
             fill_mode='nearest'
             )
-    directory = 'C:/Users/100119/Desktop/PRUDENTIAL/CREDIT_CARD_NO_MASKING/data/TRAIN_2/FRCNN/PDF_FORM_TYPES/TATA/IMAGE'
-    for filename in os.listdir(directory):
-        img = load_img(directory+"/"+filename)  # this is a PIL image
-        x = img_to_array(img)  # this is a Numpy array with shape (3, 150, 150)
-        x = x.reshape((1,) + x.shape)  # this is a Numpy array with shape (1, 3, 150, 150)
+directory = 'C:/Users/100119/Desktop/DATA_SET/ORIGINAL_DATA/FORMAT_1'
+for filename in os.listdir(directory):
+    img = load_img(directory+"/"+filename)  # this is a PIL image
+    x = img_to_array(img)  # this is a Numpy array with shape (3, 150, 150)
+    x = x.reshape((1,) + x.shape)  # this is a Numpy array with shape (1, 3, 150, 150)
 
-        # the .flow() command below generates batches of randomly transformed images
-        # and saves the results to the `preview/` directory
-        i = 0
-        j = 0
-        for batch in datagen.flow(x, batch_size=1,
-                                  save_to_dir='C:/Users/100119/Desktop/PRUDENTIAL/CREDIT_CARD_NO_MASKING/data/TRAIN_2/FRCNN/PDF_FORM_TYPES/TATA/AUG_IMAGES', save_prefix="TATA_FORM_", save_format='jpg'):
-            i += 1
-            j += 1
-            if i > 100:
-                break  # otherwise the generator would loop indefinitely
+    # the .flow() command below generates batches of randomly transformed images
+    # and saves the results to the `preview/` directory
+    i = 0
+    j = 0
+    for batch in datagen.flow(x, batch_size=1,
+                              save_to_dir='C:/Users/100119/Desktop/DATA_SET/AUG_IMAGES/FORMAT_1', save_prefix="FORMAT_1_", save_format='jpg'):
+        i += 1
+        j += 1
+        if i > 100:
+            break  # otherwise the generator would loop indefinitely
